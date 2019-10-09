@@ -2,12 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Planets/Planets/Entities/Planet+CoreDataClass.swift">
-   </FileRef>
-   <FileRef
-      location = "group:Planets/Planets/Entities/Planet+CoreDataProperties.swift">
-   </FileRef>
-   <FileRef
       location = "group:Planets/Planets.xcodeproj">
    </FileRef>
 </Workspace>
