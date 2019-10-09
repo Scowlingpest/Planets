@@ -19,8 +19,12 @@ class PlanetsTableViewController : UITableViewController {
         
         configureNavigationBar()
         
-        tableView.backgroundColor = ThemeHelper.secondaryBackground()
         self.tableView.rowHeight = UITableView.automaticDimension
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.backgroundColor = ThemeHelper.secondaryBackground()
+        tableView.reloadData()
     }
     
     private func configureNavigationBar() {
@@ -45,11 +49,23 @@ class PlanetsTableViewController : UITableViewController {
         cell.textLabel?.attributedText = NSAttributedString(string: planets[indexPath.row].name ?? "Planet" , attributes: attributes)
         
         cell.accessoryType = .disclosureIndicator
+        let settingsButton = UIBarButtonItem.init(title: "Settings", style: .plain, target: self, action: #selector(onTapSettings))
+//        let settingsButton = UIBarButtonItem(image: UIImage(named: "ic_settings"),
+//                                             style: .plain,
+//                                             target: self,
+//                                             action: #selector(onTapSettings))
+        
+        navigationItem.leftBarButtonItem = settingsButton
         return cell
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return planets.count
+    }
+    
+    @objc func onTapSettings() {
+            self.performSegue(withIdentifier: "ShowSettingsView", sender: nil)
+
     }
     
 }

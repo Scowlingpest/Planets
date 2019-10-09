@@ -12,6 +12,7 @@
 		3234807C234DD44A005B782A /* ApiCaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234807B234DD44A005B782A /* ApiCaller.swift */; };
 		323480DE234DDFDD005B782A /* DownloadIndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323480DD234DDFDD005B782A /* DownloadIndicatorViewController.swift */; };
 		323480ED234DF3B8005B782A /* CoreDataManager+Planets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323480EC234DF3B8005B782A /* CoreDataManager+Planets.swift */; };
+		323480F0234E03D5005B782A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323480EF234E03D5005B782A /* SettingsViewController.swift */; };
 		325C09F7234D18D40095F976 /* Planet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325C09F5234D18D40095F976 /* Planet+CoreDataProperties.swift */; };
 		325C09F8234D18D40095F976 /* Planet+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325C09F6234D18D40095F976 /* Planet+CoreDataClass.swift */; };
 		32EAC259234C99650000F7A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EAC258234C99650000F7A6 /* AppDelegate.swift */; };
@@ -49,6 +50,7 @@
 		3234807B234DD44A005B782A /* ApiCaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCaller.swift; sourceTree = "<group>"; };
 		323480DD234DDFDD005B782A /* DownloadIndicatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadIndicatorViewController.swift; sourceTree = "<group>"; };
 		323480EC234DF3B8005B782A /* CoreDataManager+Planets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataManager+Planets.swift"; sourceTree = "<group>"; };
+		323480EF234E03D5005B782A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		325C09F5234D18D40095F976 /* Planet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Planet+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		325C09F6234D18D40095F976 /* Planet+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Planet+CoreDataClass.swift"; sourceTree = "<group>"; };
 		32EAC255234C99650000F7A6 /* Planets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Planets.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +123,15 @@
 			path = "Data Management";
 			sourceTree = "<group>";
 		};
+		323480EE234E02E1005B782A /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				32EAC28B234C9E2B0000F7A6 /* Main.storyboard */,
+				32EAC266234C99660000F7A6 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		32EAC24C234C99650000F7A6 = {
 			isa = PBXGroup;
 			children = (
@@ -186,11 +197,11 @@
 		32EAC29C234CA4F00000F7A6 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				323480EE234E02E1005B782A /* Storyboards */,
 				32EAC2A1234CA8260000F7A6 /* Themes */,
-				32EAC28B234C9E2B0000F7A6 /* Main.storyboard */,
-				32EAC266234C99660000F7A6 /* LaunchScreen.storyboard */,
 				32EAC29D234CA5310000F7A6 /* PlanetsTableViewController.swift */,
 				323480DD234DDFDD005B782A /* DownloadIndicatorViewController.swift */,
+				323480EF234E03D5005B782A /* SettingsViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -346,6 +357,7 @@
 				32348000234CB86A005B782A /* CoreDataManager.swift in Sources */,
 				3234807C234DD44A005B782A /* ApiCaller.swift in Sources */,
 				32EAC2A3234CA8260000F7A6 /* ThemeHelper.swift in Sources */,
+				323480F0234E03D5005B782A /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

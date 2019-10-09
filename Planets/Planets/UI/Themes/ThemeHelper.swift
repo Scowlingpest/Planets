@@ -41,7 +41,8 @@ class ThemeHelper {
     }
     
     class func secondaryBackground() -> UIColor {
-        return checkTheme(light: blueGrey3, dark: blueGrey7)
+        return checkTheme(light: UIColor.green, dark: UIColor.yellow)
+//        return checkTheme(light: blueGrey3, dark: blueGrey7)
     }
     
     
