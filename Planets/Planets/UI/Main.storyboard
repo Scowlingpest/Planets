@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zfW-sc-71c">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oxG-7r-wG9">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -44,24 +44,24 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pWG-Xy-XhR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750.72463768115949" y="124.55357142857142"/>
+            <point key="canvasLocation" x="1660.8695652173915" y="124.55357142857142"/>
         </scene>
-        <!--View Controller-->
+        <!--Download Indicator View Controller-->
         <scene sceneID="3v7-Mk-krI">
             <objects>
-                <viewController id="zfW-sc-71c" sceneMemberID="viewController">
+                <viewController id="zfW-sc-71c" customClass="DownloadIndicatorViewController" customModule="Planets" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="azN-XL-uin">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downloading Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTJ-BD-sI8">
-                                <rect key="frame" x="73" y="483" width="268" height="41"/>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downloading Data" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTJ-BD-sI8">
+                                <rect key="frame" x="73" y="505" width="268" height="41"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="wFT-jw-07B">
-                                <rect key="frame" x="197" y="443" width="20" height="20"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="wFT-jw-07B">
+                                <rect key="frame" x="197" y="465" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -73,28 +73,34 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aKR-Ud-CrI"/>
                     </view>
+                    <navigationItem key="navigationItem" id="FEJ-Pv-Ffw"/>
+                    <connections>
+                        <outlet property="spinnerView" destination="wFT-jw-07B" id="Ltz-7K-NXK"/>
+                        <outlet property="statusLabel" destination="UTJ-BD-sI8" id="zg4-R3-Q8W"/>
+                        <segue destination="Ii6-xK-xIm" kind="show" identifier="ShowPlanetList" id="ggk-cv-gyM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jke-nx-WND" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-962" y="125"/>
+            <point key="canvasLocation" x="-52.173913043478265" y="124.55357142857142"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="PP3-6c-aqM">
+        <scene sceneID="04q-P7-ARE">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uN0-u0-M4n" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oxG-7r-wG9" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bqo-VU-l52">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Uaz-5K-X8Y">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Ii6-xK-xIm" kind="relationship" relationship="rootViewController" id="89U-yi-qls"/>
+                        <segue destination="zfW-sc-71c" kind="relationship" relationship="rootViewController" id="Y6G-OF-KZn"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SGe-S2-p6a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zna-fW-Fza" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-159.42028985507247" y="124.55357142857142"/>
+            <point key="canvasLocation" x="-962.31884057971024" y="124.55357142857142"/>
         </scene>
     </scenes>
 </document>
