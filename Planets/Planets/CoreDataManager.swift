@@ -8,7 +8,6 @@
 
 import CoreData
 import Foundation
-import Planets
 
 class CoreDataManager: NSObject {
     static let sharedInstance = CoreDataManager()
