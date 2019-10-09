@@ -54,6 +54,7 @@ extension CoreDataManager {
 //in the future I expect this might be moved either back to the main file or into it's own file, but since right now it's only planets it can stay here
 extension CoreDataManager: NetworkManagerDelegate {
     func savePlanetData() {
+        //PIP : IF STILL NIL THEN THROW 'ERROR NOTIFICATION'
         if let planetsJson = networkManager.planetsJson {
             for planet in planetsJson {
                 savePlanet(json: planet)
