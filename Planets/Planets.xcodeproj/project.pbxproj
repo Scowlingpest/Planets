@@ -15,6 +15,8 @@
 		323480F0234E03D5005B782A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323480EF234E03D5005B782A /* SettingsViewController.swift */; };
 		325C09F7234D18D40095F976 /* Planet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325C09F5234D18D40095F976 /* Planet+CoreDataProperties.swift */; };
 		325C09F8234D18D40095F976 /* Planet+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325C09F6234D18D40095F976 /* Planet+CoreDataClass.swift */; };
+		32A9CC6E234E6CF00079B7E1 /* PlanetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A9CC6C234E6CF00079B7E1 /* PlanetTableViewCell.swift */; };
+		32A9CC6F234E6CF00079B7E1 /* PlanetTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32A9CC6D234E6CF00079B7E1 /* PlanetTableViewCell.xib */; };
 		32EAC259234C99650000F7A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EAC258234C99650000F7A6 /* AppDelegate.swift */; };
 		32EAC25E234C99650000F7A6 /* Planets.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 32EAC25C234C99650000F7A6 /* Planets.xcdatamodeld */; };
 		32EAC262234C99660000F7A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32EAC261234C99660000F7A6 /* Assets.xcassets */; };
@@ -53,6 +55,8 @@
 		323480EF234E03D5005B782A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		325C09F5234D18D40095F976 /* Planet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Planet+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		325C09F6234D18D40095F976 /* Planet+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Planet+CoreDataClass.swift"; sourceTree = "<group>"; };
+		32A9CC6C234E6CF00079B7E1 /* PlanetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetTableViewCell.swift; sourceTree = "<group>"; };
+		32A9CC6D234E6CF00079B7E1 /* PlanetTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanetTableViewCell.xib; sourceTree = "<group>"; };
 		32EAC255234C99650000F7A6 /* Planets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Planets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32EAC258234C99650000F7A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32EAC25D234C99650000F7A6 /* Planets.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Planets.xcdatamodel; sourceTree = "<group>"; };
@@ -132,6 +136,15 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
+		32A9CC6B234E6CBE0079B7E1 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				32A9CC6C234E6CF00079B7E1 /* PlanetTableViewCell.swift */,
+				32A9CC6D234E6CF00079B7E1 /* PlanetTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		32EAC24C234C99650000F7A6 = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +210,7 @@
 		32EAC29C234CA4F00000F7A6 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				32A9CC6B234E6CBE0079B7E1 /* Cells */,
 				323480EE234E02E1005B782A /* Storyboards */,
 				32EAC2A1234CA8260000F7A6 /* Themes */,
 				32EAC29D234CA5310000F7A6 /* PlanetsTableViewController.swift */,
@@ -318,6 +332,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32A9CC6F234E6CF00079B7E1 /* PlanetTableViewCell.xib in Resources */,
 				32EAC268234C99660000F7A6 /* LaunchScreen.storyboard in Resources */,
 				32EAC265234C99660000F7A6 /* Preview Assets.xcassets in Resources */,
 				32EAC262234C99660000F7A6 /* Assets.xcassets in Resources */,
@@ -353,6 +368,7 @@
 				32EAC29E234CA5310000F7A6 /* PlanetsTableViewController.swift in Sources */,
 				32EAC259234C99650000F7A6 /* AppDelegate.swift in Sources */,
 				325C09F8234D18D40095F976 /* Planet+CoreDataClass.swift in Sources */,
+				32A9CC6E234E6CF00079B7E1 /* PlanetTableViewCell.swift in Sources */,
 				323480DE234DDFDD005B782A /* DownloadIndicatorViewController.swift in Sources */,
 				32348000234CB86A005B782A /* CoreDataManager.swift in Sources */,
 				3234807C234DD44A005B782A /* ApiCaller.swift in Sources */,

@@ -22,13 +22,19 @@ class SettingsViewController: UITableViewController {
     }
     
     func configureView(){
-        darkModeLabel.textColor = ThemeHelper.mainText()
         tableView.backgroundColor = ThemeHelper.secondaryBackground()
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = ThemeHelper.mainBackground()
+        cell.textLabel?.textColor = ThemeHelper.mainText()
+        cell.detailTextLabel?.textColor = ThemeHelper.mainText()
     }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        (view as? UITableViewHeaderFooterView)?.textLabel?.textColor = ThemeHelper.mainText()
+    }
+    
     
     @IBAction func onThemeChange(_ sender: UISwitch) {
         ThemeHelper.currentTheme = sender.isOn ? .dark : .light

@@ -43,17 +43,11 @@ class PlanetsTableViewController : UITableViewController {
         let cell = UITableViewCell()
         cell.textLabel?.textColor = ThemeHelper.mainText()
         cell.backgroundColor = ThemeHelper.mainBackground()
-        cell.accessoryView?.tintColor = ThemeHelper.accessory()
         
-        let attributes = [ NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17)]
+        let attributes = [ NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17)]
         cell.textLabel?.attributedText = NSAttributedString(string: planets[indexPath.row].name ?? "Planet" , attributes: attributes)
         
-        cell.accessoryType = .disclosureIndicator
         let settingsButton = UIBarButtonItem.init(title: "Settings", style: .plain, target: self, action: #selector(onTapSettings))
-//        let settingsButton = UIBarButtonItem(image: UIImage(named: "ic_settings"),
-//                                             style: .plain,
-//                                             target: self,
-//                                             action: #selector(onTapSettings))
         
         navigationItem.leftBarButtonItem = settingsButton
         return cell

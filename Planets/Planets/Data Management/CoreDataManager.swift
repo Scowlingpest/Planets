@@ -45,7 +45,8 @@ class CoreDataManager: NSObject {
 
 extension CoreDataManager {
     //notification names
-  public static let savedAllPlanetsNotificationName = Notification.Name(rawValue: "savedAllPlanets")
+    public static let retrievedDataNotificationName = Notification.Name(rawValue: "retrievedData")
+    public static let failedRetrievalOfDataNotificationName = Notification.Name(rawValue: "failedRetrieval")
     
 }
 
