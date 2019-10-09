@@ -20,6 +20,7 @@ class PlanetsTableViewController : UITableViewController {
         configureNavigationBar()
         
         self.tableView.rowHeight = UITableView.automaticDimension
+        self.tableView.register(UINib(nibName: "PlanetTableViewCell", bundle: nil), forCellReuseIdentifier: "PlanetCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,19 +38,22 @@ class PlanetsTableViewController : UITableViewController {
         navigationBar?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
         self.navigationItem.title = "Planets"
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.textColor = ThemeHelper.mainText()
-        cell.backgroundColor = ThemeHelper.mainBackground()
-        
-        let attributes = [ NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17)]
-        cell.textLabel?.attributedText = NSAttributedString(string: planets[indexPath.row].name ?? "Planet" , attributes: attributes)
         
         let settingsButton = UIBarButtonItem.init(title: "Settings", style: .plain, target: self, action: #selector(onTapSettings))
         
         navigationItem.leftBarButtonItem = settingsButton
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PlanetCell") as! PlanetTableViewCell
+        cell.nameLabel.textColor = ThemeHelper.mainText()
+        let planet = planets[indexPath.row]
+        cell.loadInPlanet(planet: planet)
+        
+        cell.backgroundColor = ThemeHelper.mainBackground()
+        
+        
         return cell
     }
     
