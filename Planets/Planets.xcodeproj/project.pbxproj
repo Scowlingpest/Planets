@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		32348000234CB86A005B782A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32347FFF234CB86A005B782A /* CoreDataManager.swift */; };
 		32348002234CB9E7005B782A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32348001234CB9E7005B782A /* NetworkManager.swift */; };
+		3234807C234DD44A005B782A /* ApiCaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234807B234DD44A005B782A /* ApiCaller.swift */; };
+		323480DE234DDFDD005B782A /* DownloadIndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323480DD234DDFDD005B782A /* DownloadIndicatorViewController.swift */; };
 		325C09F7234D18D40095F976 /* Planet+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325C09F5234D18D40095F976 /* Planet+CoreDataProperties.swift */; };
 		325C09F8234D18D40095F976 /* Planet+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 325C09F6234D18D40095F976 /* Planet+CoreDataClass.swift */; };
 		32EAC259234C99650000F7A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EAC258234C99650000F7A6 /* AppDelegate.swift */; };
@@ -43,6 +45,8 @@
 /* Begin PBXFileReference section */
 		32347FFF234CB86A005B782A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		32348001234CB9E7005B782A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		3234807B234DD44A005B782A /* ApiCaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCaller.swift; sourceTree = "<group>"; };
+		323480DD234DDFDD005B782A /* DownloadIndicatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadIndicatorViewController.swift; sourceTree = "<group>"; };
 		325C09F5234D18D40095F976 /* Planet+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Planet+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		325C09F6234D18D40095F976 /* Planet+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Planet+CoreDataClass.swift"; sourceTree = "<group>"; };
 		32EAC255234C99650000F7A6 /* Planets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Planets.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +101,15 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
+		3234807A234DD42D005B782A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				32348001234CB9E7005B782A /* NetworkManager.swift */,
+				3234807B234DD44A005B782A /* ApiCaller.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		32EAC24C234C99650000F7A6 = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +133,7 @@
 		32EAC257234C99650000F7A6 /* Planets */ = {
 			isa = PBXGroup;
 			children = (
+				3234807A234DD42D005B782A /* Network */,
 				32348011234CC79F005B782A /* Entities */,
 				32EAC29C234CA4F00000F7A6 /* UI */,
 				32EAC258234C99650000F7A6 /* AppDelegate.swift */,
@@ -128,7 +142,6 @@
 				32EAC269234C99660000F7A6 /* Info.plist */,
 				32EAC263234C99660000F7A6 /* Preview Content */,
 				32347FFF234CB86A005B782A /* CoreDataManager.swift */,
-				32348001234CB9E7005B782A /* NetworkManager.swift */,
 			);
 			path = Planets;
 			sourceTree = "<group>";
@@ -166,6 +179,7 @@
 				32EAC28B234C9E2B0000F7A6 /* Main.storyboard */,
 				32EAC266234C99660000F7A6 /* LaunchScreen.storyboard */,
 				32EAC29D234CA5310000F7A6 /* PlanetsTableViewController.swift */,
+				323480DD234DDFDD005B782A /* DownloadIndicatorViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -316,7 +330,9 @@
 				32EAC29E234CA5310000F7A6 /* PlanetsTableViewController.swift in Sources */,
 				32EAC259234C99650000F7A6 /* AppDelegate.swift in Sources */,
 				325C09F8234D18D40095F976 /* Planet+CoreDataClass.swift in Sources */,
+				323480DE234DDFDD005B782A /* DownloadIndicatorViewController.swift in Sources */,
 				32348000234CB86A005B782A /* CoreDataManager.swift in Sources */,
+				3234807C234DD44A005B782A /* ApiCaller.swift in Sources */,
 				32EAC2A3234CA8260000F7A6 /* ThemeHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

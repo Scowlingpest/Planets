@@ -46,19 +46,35 @@ class CoreDataManager: NSObject {
             do {
                 try context.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                print("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
+    }
+    
+    func fetchAllPlanets() -> [Planet] {
+        return fetchAll()
+    }
+    
+    //rather than have multiple methods the same, i've made a generic one so we can reuse this once we have more than one kind of object
+    private func fetchAll<T: NSManagedObject>() -> [T] {
+        let name = String(describing: T.self)
+        
+        let fetchRequest = NSFetchRequest<T>(entityName: name)
+        var foundItems = [T]()
+        self.persistentContainer.viewContext.performAndWait {
+            foundItems = try! fetchRequest.execute()
+        }
+        return foundItems
     }
     
     
     func retrieveAndLoadData() {
         networkManager.fetchPlanetsInformation()
-        if let json = networkManager.json {
-            print("hello")
+        if let planetsJson = networkManager.planetsJson {
+            for planet in planetsJson {
+                savePlanet(json: planet)
+            }
         }
     }
     
@@ -91,6 +107,7 @@ class CoreDataManager: NSObject {
             }
             
         }
+        print("Success, saving planet")
         CoreDataManager.sharedInstance.saveContext()
         
     }
