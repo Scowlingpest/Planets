@@ -20,27 +20,30 @@ extension CoreDataManager {
         let context = CoreDataManager.sharedInstance.persistentContainer.viewContext
         if let planetEntity = NSEntityDescription.insertNewObject(forEntityName: "Planet", into: context) as? Planet {
             
+            let dateFormatter: DateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+
             planetEntity.name = json["name"] as? String
-            planetEntity.created = json["created"] as? Date
+            planetEntity.created = dateFormatter.date(from: json["created"] as? String ?? "")
             planetEntity.climate = json["climate"] as? String
-            planetEntity.edited = json["edited"] as? Date
+            planetEntity.edited = dateFormatter.date(from: json["edited"] as? String ?? "")
             planetEntity.gravity = json["gravity"] as? String
             planetEntity.terrain = json["terrain"] as? String
-            planetEntity.url = json["url"] as? URL
+            planetEntity.url = URL(string: json["url"] as? String ?? "")
             
-            if let population = json["population"] as? Int64 {
+            if let population = Int64(json["population"] as? String ?? "") {
                 planetEntity.population = population
             }
             
-            if let orbital = json["orbital_period"] as? Int64 {
+            if let orbital = Int64(json["orbital_period"] as? String ?? "") {
                 planetEntity.orbitalPeriod = orbital
             }
             
-            if let diameter = json["diameter"] as? Int64 {
+            if let diameter = Int64(json["diameter"] as? String ?? "") {
                 planetEntity.diameter = diameter
             }
             
-            if let rotation = json["rotation_period"] as? Int64 {
+            if let rotation = Int64(json["rotation_period"] as? String ?? ""){
                 planetEntity.rotationPeriod = rotation
             }
             

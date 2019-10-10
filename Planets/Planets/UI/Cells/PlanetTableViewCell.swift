@@ -20,22 +20,34 @@ class PlanetTableViewCell: UITableViewCell {
     }
     
     func loadInPlanet(planet: Planet){
+        self.translatesAutoresizingMaskIntoConstraints = false
+        
         self.nameLabel.text = planet.name
         
         let values = planet.dictionaryOfValuesForDisplay()
         let labelKeys = values.keys
         let labels = labelKeys.sorted{$0 < $1}
         
+        clearStackView()
+        
         for label in labels {
             if let value = values[label], let notNilValue = value {
                 let displayLabel = UILabel()
                 displayLabel.text = "\(label): \(notNilValue)"
                 displayLabel.textColor = ThemeHelper.mainText()
-                stackView.addSubview(displayLabel)
+                stackView.addArrangedSubview(displayLabel)
             }
         }
         
     }
 
+    
+    func clearStackView() {
+        let views = stackView.arrangedSubviews
+        for view in views {
+            stackView.removeArrangedSubview(view)
+            view.removeFromSuperview()
+        }
+    }
     
 }

@@ -13,13 +13,14 @@ class PlanetsTableViewController : UITableViewController {
     
     var planets = CoreDataManager.sharedInstance.fetchAllPlanets()
     
+    var selectedIndex = -1
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
         configureNavigationBar()
         
-        self.tableView.rowHeight = UITableView.automaticDimension
         self.tableView.register(UINib(nibName: "PlanetTableViewCell", bundle: nil), forCellReuseIdentifier: "PlanetCell")
     }
     
@@ -45,6 +46,10 @@ class PlanetsTableViewController : UITableViewController {
         
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return (selectedIndex == indexPath.row) ? UITableView.automaticDimension : 36
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlanetCell") as! PlanetTableViewCell
         cell.nameLabel.textColor = ThemeHelper.mainText()
@@ -53,8 +58,29 @@ class PlanetsTableViewController : UITableViewController {
         
         cell.backgroundColor = ThemeHelper.mainBackground()
         
+        if selectedIndex == indexPath.row {
+            cell.stackView.isHidden = false
+        } else {
+            cell.stackView.isHidden = true
+        }
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if selectedIndex == indexPath.row {
+            selectedIndex = -1
+            deselectCell(indexPath: indexPath)
+        } else {
+            deselectCell(indexPath: IndexPath(row: selectedIndex, section: 0))
+            selectedIndex = indexPath.row
+        }
+        
+        if let cell = tableView.cellForRow(at: indexPath) as? PlanetTableViewCell {
+            cell.stackView.isHidden = false
+            tableView.beginUpdates()
+            tableView.endUpdates()
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -64,6 +90,12 @@ class PlanetsTableViewController : UITableViewController {
     @objc func onTapSettings() {
             self.performSegue(withIdentifier: "ShowSettingsView", sender: nil)
 
+    }
+    
+    func deselectCell(indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? PlanetTableViewCell {
+            cell.stackView.isHidden = true
+        }
     }
     
 }
