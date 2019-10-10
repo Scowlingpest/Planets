@@ -29,4 +29,17 @@ extension Planet {
     @NSManaged public var terrain: String?
     @NSManaged public var url: URL?
 
+    
+    func dictionaryOfValuesForDisplay() -> [String: String?] {
+        var dictionary = [String: String?]()
+        dictionary["Climate"] = climate
+        dictionary["Diameter"] = String(diameter)
+        dictionary["Gravity"] = gravity
+        dictionary["Orbital Period"] = String(orbitalPeriod)
+        dictionary["Population"] = String(population)
+        dictionary["Rotation Period"] = String(rotationPeriod)
+        dictionary["Surface Water"] = String(surfaceWater)
+        dictionary["Terrain"] = terrain
+        return dictionary
+    }
 }

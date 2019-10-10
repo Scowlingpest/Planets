@@ -11,6 +11,7 @@ import Foundation
 class NetworkManager {
     let planetAddress = "https://swapi.co/api/planets/"
     var planetsJson : [[String: AnyObject]]?
+    var next: String?
     var delegate: NetworkManagerDelegate
     
     init(delegate: NetworkManagerDelegate){
@@ -19,9 +20,10 @@ class NetworkManager {
     
     func fetchPlanetsInformation() {
         let planetCaller = ApiCaller(address: planetAddress)
-        planetCaller.fetchFromAPI(){ json in
+        planetCaller.fetchFromAPI(){ json, next in
             if let jsonResponse = json, let results = jsonResponse["results"] as? [[String: AnyObject]] {
                 self.planetsJson = results
+                self.next = next
             }
 
             self.delegate.savePlanetData()

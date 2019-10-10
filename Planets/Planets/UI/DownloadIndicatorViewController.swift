@@ -14,9 +14,11 @@ class DownloadIndicatorViewController: UIViewController {
     
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var spinnerView: UIActivityIndicatorView!
+    @IBOutlet weak var retryButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        spinnerView.hidesWhenStopped = true
         
     }
     
@@ -26,15 +28,16 @@ class DownloadIndicatorViewController: UIViewController {
         } else {
             setupView()
             spinnerView.startAnimating()
-            NotificationCenter.default.addObserver(self, selector: #selector(dataLoaded), name: CoreDataManager.savedAllPlanetsNotificationName, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(dataLoaded), name: CoreDataManager.retrievedDataNotificationName, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(dataLoaded), name: CoreDataManager.failedRetrievalOfDataNotificationName, object: nil)
             CoreDataManager.sharedInstance.askForPlanetData()
-            setupView()
         }
     }
     
     func setupView() {
         spinnerView.isHidden = false
         statusLabel.isHidden = false
+        retryButton.isHidden = true
         spinnerView.transform = CGAffineTransform(scaleX: 3, y: 3)
         spinnerView.color = ThemeHelper.mainText()
         statusLabel.textColor = ThemeHelper.mainText()
@@ -45,10 +48,21 @@ class DownloadIndicatorViewController: UIViewController {
             if !CoreDataManager.sharedInstance.fetchAllPlanets().isEmpty {
                 self.proceedToApplication()
             } else {
-                self.statusLabel.text = "Failed!!!"
-                self.statusLabel.reloadInputViews()
+                failedToLoad()
             }
         
+    }
+    
+    @objc func failedToLoad(){
+        self.statusLabel.text = "Failed to download\n please try again"
+        self.spinnerView.stopAnimating()
+        self.retryButton.isHidden = false
+        self.reloadInputViews()
+    }
+    
+    @IBAction func retryDataDownload(_ sender: UIButton) {
+        setupView()
+        CoreDataManager.sharedInstance.askForPlanetData()
     }
     
     func proceedToApplication() {

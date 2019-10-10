@@ -15,7 +15,7 @@ class ApiCaller {
         self.address = address
     }
     
-    func fetchFromAPI(completion: @escaping ([String: AnyObject]?) ->() ) {
+    func fetchFromAPI(completion: @escaping ([String: AnyObject]?, String?) ->() ) {
         guard let url = URL(string: address) else {
             return
         }
@@ -25,10 +25,10 @@ class ApiCaller {
             if data != nil {
                 do{
                     let json = try JSONSerialization.jsonObject(with: data!, options: [.mutableContainers]) as? [String: AnyObject]
-                    completion(json)
+                    completion(json, json?["next"] as? String)
                 }catch{
                     print("Planet JSON serialising error: \(error.localizedDescription)")
-                    completion(nil)
+                    completion(nil, nil)
                 }
             }
         }

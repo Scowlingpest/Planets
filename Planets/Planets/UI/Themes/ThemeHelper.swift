@@ -9,41 +9,49 @@
 import Foundation
 import UIKit
 
-enum ThemeType {
+enum ThemeType: String {
     
     case light
     case dark
 }
 
 class ThemeHelper {
-
     //current color theme, set to light mode by default
-    static var currentTheme = ThemeType.light
+    static var currentTheme = ThemeType(rawValue: UserDefaults.standard.string(forKey: ThemeHelper.themeSetKey) ?? "light")
+    
+    public static let themeSetKey = "planets.theme"
 
-    //colors generated from https://www.materialui.co/colors
-    //color names are to correspond with the website mentioned, so blueGrey2 is 200 from the blue grey column
-    private static let blueGrey2 = makeColor(red: 207, green: 216, blue: 220)
-    private static let blueGrey3 = makeColor(red: 176, green: 190, blue: 197)
-    private static let blueGrey6 = makeColor(red: 84, green: 110, blue: 122)
-    private static let blueGrey7 = makeColor(red: 69, green: 90, blue: 100)
+    //for the following colous, the number at the end of the name is the percentage of that colour
+    //so lightGrey85 is 85% white (i've called it light/dark grey because white 85 sounded off)
+    
+    //main background colours
+    private static let lightGrey85 = makeColor(red: 217, green: 217, blue: 217)
+    private static let darkGrey30 = makeColor(red: 77, green: 77, blue: 77)
+    
+    //secondary background colours
+    private static let lightGrey75 = makeColor(red: 191, green: 191, blue: 191)
+    private static let darkGrey20 = makeColor(red: 51, green: 51, blue: 51)
+    
+    private static let blue45 = makeColor(red: 0, green: 57, blue: 230)
     
     
     class func mainText() -> UIColor {
         return checkTheme(light: UIColor.black, dark: UIColor.white)
     }
     
-    class func accessory() -> UIColor {
-        return checkTheme(light: UIColor.darkGray, dark: UIColor.lightGray)
-    }
-    
     class func mainBackground() -> UIColor {
-        return checkTheme(light: blueGrey2, dark: blueGrey6)
+        return checkTheme(light: lightGrey85, dark: darkGrey30)
     }
     
     class func secondaryBackground() -> UIColor {
-        return checkTheme(light: blueGrey3, dark: blueGrey7)
+        return checkTheme(light: lightGrey75, dark: darkGrey20)
     }
     
+    class func switchTheme(){
+        self.currentTheme = (currentTheme == .light) ? .dark : .light
+        
+        UserDefaults.standard.set(currentTheme?.rawValue, forKey: themeSetKey)
+    }
     
     //helper method to cut down duplication, every method needs this check so i've split it out into this method
     private class func checkTheme(light: UIColor, dark: UIColor) -> UIColor {
