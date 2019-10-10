@@ -10,8 +10,9 @@ import UIKit
 
 
 class PlanetsTableViewController : UITableViewController {
-    
+    var searchController = UISearchController(searchResultsController: nil)
     var planets = CoreDataManager.sharedInstance.fetchAllPlanets()
+    var filteredPlanets = CoreDataManager.sharedInstance.fetchAllPlanets()
     
     var selectedIndex = -1
     
@@ -44,6 +45,16 @@ class PlanetsTableViewController : UITableViewController {
         
         navigationItem.leftBarButtonItem = settingsButton
         
+        searchController.delegate = self
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        searchController.searchBar.barStyle = .black
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.isActive = true
+        
+        navigationItem.searchController = searchController
+        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -53,7 +64,7 @@ class PlanetsTableViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlanetCell") as! PlanetTableViewCell
         cell.nameLabel.textColor = ThemeHelper.mainText()
-        let planet = planets[indexPath.row]
+        let planet = filteredPlanets[indexPath.row]
         cell.loadInPlanet(planet: planet)
         
         cell.backgroundColor = ThemeHelper.mainBackground()
@@ -84,7 +95,7 @@ class PlanetsTableViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return planets.count
+        return filteredPlanets.count
     }
     
     @objc func onTapSettings() {
@@ -97,5 +108,29 @@ class PlanetsTableViewController : UITableViewController {
             cell.stackView.isHidden = true
         }
     }
+}
+extension PlanetsTableViewController: UISearchControllerDelegate,UISearchResultsUpdating {
     
+    func updateSearchResults(for searchController: UISearchController) {
+        filter(searchText: searchController.searchBar.text)
+        tableView.reloadData()
+    }
+    
+    func filter(searchText: String?) {
+        if searchText == nil || searchText?.isEmpty ?? true {
+           filteredPlanets = planets
+        } else if let search = searchText {
+            let searchPredicate = NSPredicate(format: "self contains [cd] %@", search)
+            
+            let items = planets.filter { planet -> Bool in
+                return searchPredicate.evaluate(with: planet.name)
+            }
+            
+            if !items.isEmpty {
+                
+                filteredPlanets = items
+            }
+        }
+        
+    }
 }
