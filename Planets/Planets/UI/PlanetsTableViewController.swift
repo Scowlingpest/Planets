@@ -16,6 +16,12 @@ class PlanetsTableViewController : UITableViewController {
     
     var selectedIndex = -1
     
+    func reloadController(){
+        searchController = UISearchController(searchResultsController: nil)
+        planets = CoreDataManager.sharedInstance.fetchAllPlanets()
+        filteredPlanets = planets
+    }
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -31,20 +37,23 @@ class PlanetsTableViewController : UITableViewController {
     }
     
     private func configureNavigationBar() {
+        //hide back button so they can't go back to the 'downloading screen'
         self.navigationItem.setHidesBackButton(true, animated:true)
         
         let navigationBar = self.navigationController?.navigationBar
         navigationBar?.barStyle = UIBarStyle.black
         navigationBar?.tintColor = UIColor.white
-        
         navigationBar?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
-        self.navigationItem.title = "Planets"
+        self.navigationItem.title = "Planets" // title of the app, so it's not localised
         
         let settingsButton = UIBarButtonItem.init(title: "Settings", style: .plain, target: self, action: #selector(onTapSettings))
-        
         navigationItem.leftBarButtonItem = settingsButton
         
+        configureSearchController()
+    }
+    
+    private func configureSearchController() {
         searchController.delegate = self
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -54,7 +63,6 @@ class PlanetsTableViewController : UITableViewController {
         searchController.isActive = true
         
         navigationItem.searchController = searchController
-        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
