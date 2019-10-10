@@ -16,16 +16,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="plg-aw-NIb">
-                                <rect key="frame" x="20" y="50" width="374" height="806"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Planets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mLW-BY-oMi">
+                                <rect key="frame" x="162.5" y="436.5" width="89" height="33.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="PlanetImage" translatesAutoresizingMaskIntoConstraints="NO" id="hvh-cr-rSx" userLabel="planetImage">
+                                <rect key="frame" x="0.0" y="157" width="414" height="592"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="plg-aw-NIb" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="20" id="RQp-72-8Bz"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="plg-aw-NIb" secondAttribute="trailing" constant="20" id="UK7-df-Nkn"/>
-                            <constraint firstItem="plg-aw-NIb" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="e6d-BD-HeO"/>
-                            <constraint firstItem="plg-aw-NIb" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="gZN-ZJ-j3s"/>
+                            <constraint firstItem="hvh-cr-rSx" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="4Rg-ie-iWZ"/>
+                            <constraint firstAttribute="trailing" secondItem="hvh-cr-rSx" secondAttribute="trailing" id="5EZ-WO-jad"/>
+                            <constraint firstItem="hvh-cr-rSx" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="EEO-iK-xZH"/>
+                            <constraint firstItem="mLW-BY-oMi" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="ZbS-B1-Wza"/>
+                            <constraint firstItem="hvh-cr-rSx" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="dZY-dd-80q"/>
+                            <constraint firstItem="mLW-BY-oMi" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="fQe-5K-fUn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -36,6 +45,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="splash" width="412" height="403"/>
+        <image name="PlanetImage" width="600" height="592"/>
     </resources>
 </document>
