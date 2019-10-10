@@ -21,6 +21,7 @@ class SettingsViewController: UITableViewController {
         configureView()
     }
     
+    //using static cells, and the dark theme row is a custom one so it's label gets set separately here
     func configureView(){
         tableView.backgroundColor = ThemeHelper.secondaryBackground()
         darkModeLabel.textColor = ThemeHelper.mainText()
@@ -36,9 +37,9 @@ class SettingsViewController: UITableViewController {
         (view as? UITableViewHeaderFooterView)?.textLabel?.textColor = ThemeHelper.mainText()
     }
     
-    
+    //if minimum iOS was 13 this would probably be set by the systems overall theme
     @IBAction func onThemeChange(_ sender: UISwitch) {
-        ThemeHelper.currentTheme = sender.isOn ? .dark : .light
+        ThemeHelper.switchTheme()
         configureView()
         tableView.reloadData()
     }

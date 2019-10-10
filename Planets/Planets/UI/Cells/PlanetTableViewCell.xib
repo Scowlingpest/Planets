@@ -24,7 +24,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ske-Wa-984">
-                        <rect key="frame" x="8" y="37" width="304" height="63"/>
+                        <rect key="frame" x="16" y="37" width="296" height="63"/>
                     </stackView>
                 </subviews>
                 <constraints>
@@ -33,7 +33,7 @@
                     <constraint firstAttribute="trailing" secondItem="ske-Wa-984" secondAttribute="trailing" constant="8" id="f6W-cV-JuX"/>
                     <constraint firstAttribute="bottom" secondItem="ske-Wa-984" secondAttribute="bottom" id="h4w-6A-OM3"/>
                     <constraint firstItem="ske-Wa-984" firstAttribute="top" secondItem="6a0-PG-I5p" secondAttribute="bottom" constant="8" id="tAf-3j-xU4"/>
-                    <constraint firstItem="ske-Wa-984" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="xbF-dr-5bW"/>
+                    <constraint firstItem="ske-Wa-984" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="xbF-dr-5bW"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

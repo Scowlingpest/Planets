@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-enum ThemeType {
+enum ThemeType: String {
     
     case light
     case dark
@@ -17,7 +17,9 @@ enum ThemeType {
 
 class ThemeHelper {
     //current color theme, set to light mode by default
-    static var currentTheme = ThemeType.light
+    static var currentTheme = ThemeType(rawValue: UserDefaults.standard.string(forKey: ThemeHelper.themeSetKey) ?? "light")
+    
+    public static let themeSetKey = "planets.theme"
 
     //for the following colous, the number at the end of the name is the percentage of that colour
     //so lightGrey85 is 85% white (i've called it light/dark grey because white 85 sounded off)
@@ -29,7 +31,6 @@ class ThemeHelper {
     //secondary background colours
     private static let lightGrey75 = makeColor(red: 191, green: 191, blue: 191)
     private static let darkGrey20 = makeColor(red: 51, green: 51, blue: 51)
-    
     
     private static let blue45 = makeColor(red: 0, green: 57, blue: 230)
     
@@ -44,9 +45,13 @@ class ThemeHelper {
     
     class func secondaryBackground() -> UIColor {
         return checkTheme(light: lightGrey75, dark: darkGrey20)
-//        return checkTheme(light: blueGrey3, dark: blueGrey7)
     }
     
+    class func switchTheme(){
+        self.currentTheme = (currentTheme == .light) ? .dark : .light
+        
+        UserDefaults.standard.set(currentTheme?.rawValue, forKey: themeSetKey)
+    }
     
     //helper method to cut down duplication, every method needs this check so i've split it out into this method
     private class func checkTheme(light: UIColor, dark: UIColor) -> UIColor {

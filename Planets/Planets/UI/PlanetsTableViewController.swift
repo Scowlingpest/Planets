@@ -65,6 +65,7 @@ class PlanetsTableViewController : UITableViewController {
         navigationItem.searchController = searchController
     }
     
+    //two heights, theres "take as much space as you need" and "only show the label" heights, this allows us to expand the one we are looking at
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return (selectedIndex == indexPath.row) ? UITableView.automaticDimension : 36
     }
@@ -87,6 +88,7 @@ class PlanetsTableViewController : UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //if they've tapped the same cell, clear our noted index and deselect it, otherwise deselect the old row and set selected to the new one
         if selectedIndex == indexPath.row {
             selectedIndex = -1
             deselectCell(indexPath: indexPath)
@@ -95,11 +97,23 @@ class PlanetsTableViewController : UITableViewController {
             selectedIndex = indexPath.row
         }
         
-        if let cell = tableView.cellForRow(at: indexPath) as? PlanetTableViewCell {
+        //if we have a new cell to expand, expand it
+        if let cell = tableView.cellForRow(at: indexPath) as? PlanetTableViewCell,
+            selectedIndex != -1 {
             cell.stackView.isHidden = false
-            tableView.beginUpdates()
-            tableView.endUpdates()
         }
+        //update the tableView
+        tableView.beginUpdates()
+        tableView.endUpdates()
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return NSLocalizedString("Planet Information", comment: "Planet Information")
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        (view as? UITableViewHeaderFooterView)?.textLabel?.textColor = ThemeHelper.mainText()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -107,8 +121,8 @@ class PlanetsTableViewController : UITableViewController {
     }
     
     @objc func onTapSettings() {
-            self.performSegue(withIdentifier: "ShowSettingsView", sender: nil)
-
+        self.performSegue(withIdentifier: "ShowSettingsView", sender: nil)
+        
     }
     
     func deselectCell(indexPath: IndexPath) {
@@ -126,7 +140,7 @@ extension PlanetsTableViewController: UISearchControllerDelegate,UISearchResults
     
     func filter(searchText: String?) {
         if searchText == nil || searchText?.isEmpty ?? true {
-           filteredPlanets = planets
+            filteredPlanets = planets
         } else if let search = searchText {
             let searchPredicate = NSPredicate(format: "self contains [cd] %@", search)
             

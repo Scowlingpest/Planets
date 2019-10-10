@@ -16,7 +16,6 @@ class PlanetTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     func loadInPlanet(planet: Planet){
@@ -40,8 +39,8 @@ class PlanetTableViewCell: UITableViewCell {
         }
         
     }
-
     
+    //shortcut method for clearing the stackview so we don't end up with a lot of duplicated subviews in the stackview
     func clearStackView() {
         let views = stackView.arrangedSubviews
         for view in views {
