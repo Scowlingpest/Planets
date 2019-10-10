@@ -23,6 +23,7 @@ class SettingsViewController: UITableViewController {
     
     func configureView(){
         tableView.backgroundColor = ThemeHelper.secondaryBackground()
+        darkModeLabel.textColor = ThemeHelper.mainText()
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
