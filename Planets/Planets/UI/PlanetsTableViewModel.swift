@@ -53,6 +53,7 @@ class PlanetTableViewModel: NSObject, UITableViewDataSource {
         
         cell.backgroundColor = ThemeHelper.mainBackground()
         cell.textLabel?.textColor = ThemeHelper.mainText()
+        cell.detailTextLabel?.textColor = ThemeHelper.mainText()
         
         return cell
     }
