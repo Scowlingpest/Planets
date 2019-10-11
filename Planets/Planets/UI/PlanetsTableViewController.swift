@@ -42,12 +42,14 @@ class PlanetsTableViewController : UITableViewController {
         
         self.navigationItem.title = "Planets" // title of the app, so it's not localised
         
+        //should replace with an icon at some point, but for now the word Settings will be used
         let settingsButton = UIBarButtonItem.init(title: "Settings", style: .plain, target: self, action: #selector(onTapSettings))
         navigationItem.leftBarButtonItem = settingsButton
         
         configureSearchController()
     }
     
+    //makes the search controller at the top of the planet list, we want it always visible and always on top
     private func configureSearchController() {
         searchController.delegate = self
         searchController.searchResultsUpdater = self
@@ -64,6 +66,7 @@ class PlanetsTableViewController : UITableViewController {
         self.performSegue(withIdentifier: "ShowSettingsView", sender: nil)
         
     }
+    
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return UITableView.automaticDimension
     }
