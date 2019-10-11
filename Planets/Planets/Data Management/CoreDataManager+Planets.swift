@@ -22,7 +22,7 @@ extension CoreDataManager {
             
             let dateFormatter: DateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-
+            
             planetEntity.name = json["name"] as? String
             planetEntity.created = dateFormatter.date(from: json["created"] as? String ?? "")
             planetEntity.climate = json["climate"] as? String
@@ -47,9 +47,24 @@ extension CoreDataManager {
                 planetEntity.rotationPeriod = rotation
             }
             
+            if let surfaceWater = Int64(json["surface_water"] as? String ?? ""){
+                planetEntity.surfaceWater = surfaceWater
+            }
+            
         }
         CoreDataManager.sharedInstance.saveContext()
         
+    }
+    
+    func planetInfoDisplayOrder() ->[String] {
+        return ["Rotation Period",
+                "Orbital Period",
+                "Diameter",
+                "Climate",
+                "Gravity",
+                "Terrain",
+                "Surface Water",
+                "Population"]
     }
     
 }
@@ -67,6 +82,6 @@ extension CoreDataManager: NetworkManagerDelegate {
             NotificationCenter.default.post(name: CoreDataManager.failedRetrievalOfDataNotificationName, object: nil)
         }
         
-
+        
     }
 }

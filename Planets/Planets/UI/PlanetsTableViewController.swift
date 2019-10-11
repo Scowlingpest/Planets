@@ -11,16 +11,8 @@ import UIKit
 
 class PlanetsTableViewController : UITableViewController {
     var searchController = UISearchController(searchResultsController: nil)
-    var planets = CoreDataManager.sharedInstance.fetchAllPlanets()
-    var filteredPlanets = CoreDataManager.sharedInstance.fetchAllPlanets()
-    
     var selectedIndex = -1
-    
-    func reloadController(){
-        searchController = UISearchController(searchResultsController: nil)
-        planets = CoreDataManager.sharedInstance.fetchAllPlanets()
-        filteredPlanets = planets
-    }
+    var viewModel = PlanetTableViewModel()
     
     override func viewDidLoad() {
         
@@ -28,7 +20,10 @@ class PlanetsTableViewController : UITableViewController {
         
         configureNavigationBar()
         
-        self.tableView.register(UINib(nibName: "PlanetTableViewCell", bundle: nil), forCellReuseIdentifier: "PlanetCell")
+        self.tableView.register(UINib(nibName: "PlanetNameHeaderCell", bundle: nil), forCellReuseIdentifier: "PlanetCell")
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = UITableView.automaticDimension
+        tableView.dataSource = viewModel
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,71 +60,22 @@ class PlanetsTableViewController : UITableViewController {
         navigationItem.searchController = searchController
     }
     
-    //two heights, theres "take as much space as you need" and "only show the label" heights, this allows us to expand the one we are looking at
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return (selectedIndex == indexPath.row) ? UITableView.automaticDimension : 36
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PlanetCell") as! PlanetTableViewCell
-        cell.nameLabel.textColor = ThemeHelper.mainText()
-        let planet = filteredPlanets[indexPath.row]
-        cell.loadInPlanet(planet: planet)
-        
-        cell.backgroundColor = ThemeHelper.mainBackground()
-        
-        if selectedIndex == indexPath.row {
-            cell.stackView.isHidden = false
-        } else {
-            cell.stackView.isHidden = true
-        }
-        
-        return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //if they've tapped the same cell, clear our noted index and deselect it, otherwise deselect the old row and set selected to the new one
-        if selectedIndex == indexPath.row {
-            selectedIndex = -1
-            deselectCell(indexPath: indexPath)
-        } else {
-            deselectCell(indexPath: IndexPath(row: selectedIndex, section: 0))
-            selectedIndex = indexPath.row
-        }
-        
-        //if we have a new cell to expand, expand it
-        if let cell = tableView.cellForRow(at: indexPath) as? PlanetTableViewCell,
-            selectedIndex != -1 {
-            cell.stackView.isHidden = false
-        }
-        //update the tableView
-        tableView.beginUpdates()
-        tableView.endUpdates()
-        
-    }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return NSLocalizedString("Planet Information", comment: "Planet Information")
-    }
-    
-    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        (view as? UITableViewHeaderFooterView)?.textLabel?.textColor = ThemeHelper.mainText()
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredPlanets.count
-    }
-    
     @objc func onTapSettings() {
         self.performSegue(withIdentifier: "ShowSettingsView", sender: nil)
         
     }
-    
-    func deselectCell(indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) as? PlanetTableViewCell {
-            cell.stackView.isHidden = true
-        }
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return UITableView.automaticDimension
     }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerCell = tableView.dequeueReusableCell(withIdentifier: "PlanetCell") as? PlanetNameHeaderCell
+        
+        headerCell?.createBasicCell(name: viewModel.filteredPlanetNames[section], section: section)
+        headerCell?.delegate = self
+        return headerCell
+    }
+    
 }
 extension PlanetsTableViewController: UISearchControllerDelegate,UISearchResultsUpdating {
     
@@ -140,19 +86,26 @@ extension PlanetsTableViewController: UISearchControllerDelegate,UISearchResults
     
     func filter(searchText: String?) {
         if searchText == nil || searchText?.isEmpty ?? true {
-            filteredPlanets = planets
+            viewModel.resetSearch()
         } else if let search = searchText {
             let searchPredicate = NSPredicate(format: "self contains [cd] %@", search)
             
-            let items = planets.filter { planet -> Bool in
-                return searchPredicate.evaluate(with: planet.name)
+            let items = viewModel.planetNames.filter { planetName -> Bool in
+                return searchPredicate.evaluate(with: planetName)
             }
             
-            if !items.isEmpty {
-                
-                filteredPlanets = items
+            if !items.isEmpty {   
+                viewModel.filteredPlanetNames = items
             }
         }
+        
+    }
+}
+
+extension PlanetsTableViewController: CollapsibleHeaderDelegate {
+    func sectionTapped(didSelectSection section: Int) {
+        viewModel.selectedIndex = viewModel.selectedIndex == section ? -1 : section
+        tableView.reloadData()
         
     }
 }
