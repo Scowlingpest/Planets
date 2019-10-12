@@ -11,7 +11,6 @@ import UIKit
 
 class PlanetsTableViewController : UITableViewController {
     var searchController = UISearchController(searchResultsController: nil)
-    var selectedIndex = -1
     var viewModel = PlanetTableViewModel()
     
     override func viewDidLoad() {
@@ -110,6 +109,11 @@ extension PlanetsTableViewController: CollapsibleHeaderDelegate {
     func sectionTapped(didSelectSection section: Int) {
         viewModel.selectedIndex = viewModel.selectedIndex == section ? -1 : section
         tableView.reloadData()
+        if viewModel.selectedIndex != -1 {
+            tableView.scrollToRow(at: IndexPath(row: 0, section: section), at: .top, animated: true)
+        } else {
+            tableView.scrollToRow(at: IndexPath(row: NSNotFound, section: section), at: .none, animated: false)
+        }
         
     }
 }
