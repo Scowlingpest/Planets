@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		321C903323509D9C00C43B90 /* PlanetsTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321C903223509D9C00C43B90 /* PlanetsTableViewModel.swift */; };
+		321C90592351451600C43B90 /* CoreDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321C90582351451600C43B90 /* CoreDataManagerTests.swift */; };
+		321C905C23514CED00C43B90 /* JsonFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321C905B23514CED00C43B90 /* JsonFormatter.swift */; };
 		32348000234CB86A005B782A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32347FFF234CB86A005B782A /* CoreDataManager.swift */; };
 		32348002234CB9E7005B782A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32348001234CB9E7005B782A /* NetworkManager.swift */; };
 		3234807C234DD44A005B782A /* ApiCaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234807B234DD44A005B782A /* ApiCaller.swift */; };
@@ -49,6 +51,8 @@
 
 /* Begin PBXFileReference section */
 		321C903223509D9C00C43B90 /* PlanetsTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsTableViewModel.swift; sourceTree = "<group>"; };
+		321C90582351451600C43B90 /* CoreDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerTests.swift; sourceTree = "<group>"; };
+		321C905B23514CED00C43B90 /* JsonFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonFormatter.swift; sourceTree = "<group>"; };
 		32347FFF234CB86A005B782A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		32348001234CB9E7005B782A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3234807B234DD44A005B782A /* ApiCaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCaller.swift; sourceTree = "<group>"; };
@@ -125,6 +129,7 @@
 			children = (
 				32347FFF234CB86A005B782A /* CoreDataManager.swift */,
 				323480EC234DF3B8005B782A /* CoreDataManager+Planets.swift */,
+				321C905B23514CED00C43B90 /* JsonFormatter.swift */,
 			);
 			path = "Data Management";
 			sourceTree = "<group>";
@@ -196,6 +201,7 @@
 			children = (
 				32EAC272234C99660000F7A6 /* PlanetsTests.swift */,
 				32EAC274234C99660000F7A6 /* Info.plist */,
+				321C90582351451600C43B90 /* CoreDataManagerTests.swift */,
 			);
 			path = PlanetsTests;
 			sourceTree = "<group>";
@@ -374,6 +380,7 @@
 				325C09F8234D18D40095F976 /* Planet+CoreDataClass.swift in Sources */,
 				32A9CC6E234E6CF00079B7E1 /* PlanetNameHeaderCell.swift in Sources */,
 				323480DE234DDFDD005B782A /* DownloadIndicatorViewController.swift in Sources */,
+				321C905C23514CED00C43B90 /* JsonFormatter.swift in Sources */,
 				32348000234CB86A005B782A /* CoreDataManager.swift in Sources */,
 				3234807C234DD44A005B782A /* ApiCaller.swift in Sources */,
 				32EAC2A3234CA8260000F7A6 /* ThemeHelper.swift in Sources */,
@@ -385,6 +392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				321C90592351451600C43B90 /* CoreDataManagerTests.swift in Sources */,
 				32EAC273234C99660000F7A6 /* PlanetsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

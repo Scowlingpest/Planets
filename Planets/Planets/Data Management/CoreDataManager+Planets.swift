@@ -19,37 +19,22 @@ extension CoreDataManager {
     func savePlanet(json: [String: Any]) {
         let context = CoreDataManager.sharedInstance.persistentContainer.viewContext
         if let planetEntity = NSEntityDescription.insertNewObject(forEntityName: "Planet", into: context) as? Planet {
+            let jsonFormatter = JsonFormatter()
             
-            let dateFormatter: DateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+            planetEntity.name = jsonFormatter.jsonToString(json: json["name"])
+            planetEntity.created = jsonFormatter.jsonToDate(json: json["created"])
+            planetEntity.climate = jsonFormatter.jsonToString(json: json["climate"])
+            planetEntity.edited = jsonFormatter.jsonToDate(json: json["edited"])
+            planetEntity.gravity = jsonFormatter.jsonToString(json: json["gravity"])
+            planetEntity.terrain = jsonFormatter.jsonToString(json: json["terrain"])
+            planetEntity.url = jsonFormatter.jsonToURL(json: json["url"])
             
-            planetEntity.name = json["name"] as? String
-            planetEntity.created = dateFormatter.date(from: json["created"] as? String ?? "")
-            planetEntity.climate = json["climate"] as? String
-            planetEntity.edited = dateFormatter.date(from: json["edited"] as? String ?? "")
-            planetEntity.gravity = json["gravity"] as? String
-            planetEntity.terrain = json["terrain"] as? String
-            planetEntity.url = URL(string: json["url"] as? String ?? "")
+            planetEntity.population = jsonFormatter.jsonToInt(json: json["population"])
+            planetEntity.orbitalPeriod = jsonFormatter.jsonToInt(json: json["orbital_period"])
+            planetEntity.diameter = jsonFormatter.jsonToInt(json: json["diameter"])
+            planetEntity.rotationPeriod = jsonFormatter.jsonToInt(json: json["rotation_period"])
+            planetEntity.surfaceWater = jsonFormatter.jsonToInt(json: json["surface_water"])
             
-            if let population = Int64(json["population"] as? String ?? "") {
-                planetEntity.population = population
-            }
-            
-            if let orbital = Int64(json["orbital_period"] as? String ?? "") {
-                planetEntity.orbitalPeriod = orbital
-            }
-            
-            if let diameter = Int64(json["diameter"] as? String ?? "") {
-                planetEntity.diameter = diameter
-            }
-            
-            if let rotation = Int64(json["rotation_period"] as? String ?? ""){
-                planetEntity.rotationPeriod = rotation
-            }
-            
-            if let surfaceWater = Int64(json["surface_water"] as? String ?? ""){
-                planetEntity.surfaceWater = surfaceWater
-            }
             
         }
         CoreDataManager.sharedInstance.saveContext()

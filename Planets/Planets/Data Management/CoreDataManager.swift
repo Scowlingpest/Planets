@@ -11,7 +11,7 @@ import Foundation
 
 class CoreDataManager: NSObject {
     static let sharedInstance = CoreDataManager()
-    private override init() {}
+    override init() {}
     
     //network manager, we only want to talk to the api from here currently so only the core data manager needs one of these
     lazy var networkManager: NetworkManager = NetworkManager(delegate: self)
