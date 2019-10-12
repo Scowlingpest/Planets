@@ -18,6 +18,7 @@ class JsonFormatter {
         
     }
     
+    //was originally being used before I discovered the numbers could be 'unknown', leaving it in for future use
     func jsonToInt(json: Any?) -> Int64 {
         if let transformed = Int64(stringOrBlank(json: json)) {
             return transformed

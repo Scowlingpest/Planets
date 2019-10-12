@@ -60,6 +60,8 @@ class PlanetsTableViewController : UITableViewController {
         searchController.isActive = true
         
         navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        
     }
     
     @objc func onTapSettings() {

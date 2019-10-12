@@ -29,11 +29,12 @@ extension CoreDataManager {
             planetEntity.terrain = jsonFormatter.jsonToString(json: json["terrain"])
             planetEntity.url = jsonFormatter.jsonToURL(json: json["url"])
             
-            planetEntity.population = jsonFormatter.jsonToInt(json: json["population"])
-            planetEntity.orbitalPeriod = jsonFormatter.jsonToInt(json: json["orbital_period"])
-            planetEntity.diameter = jsonFormatter.jsonToInt(json: json["diameter"])
-            planetEntity.rotationPeriod = jsonFormatter.jsonToInt(json: json["rotation_period"])
-            planetEntity.surfaceWater = jsonFormatter.jsonToInt(json: json["surface_water"])
+            //originally had most of these as ints, then dicovered they could be 'unknown', felt 0 != "unknown" so changed them to strings
+            planetEntity.population = jsonFormatter.jsonToString(json: json["population"])
+            planetEntity.orbitalPeriod = jsonFormatter.jsonToString(json: json["orbital_period"])
+            planetEntity.diameter = jsonFormatter.jsonToString(json: json["diameter"])
+            planetEntity.rotationPeriod = jsonFormatter.jsonToString(json: json["rotation_period"])
+            planetEntity.surfaceWater = jsonFormatter.jsonToString(json: json["surface_water"])
             
             
         }

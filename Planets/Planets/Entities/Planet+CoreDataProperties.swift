@@ -18,14 +18,14 @@ extension Planet {
 
     @NSManaged public var climate: String?
     @NSManaged public var created: Date?
-    @NSManaged public var diameter: Int64
+    @NSManaged public var diameter: String?
     @NSManaged public var edited: Date?
     @NSManaged public var gravity: String?
     @NSManaged public var name: String?
-    @NSManaged public var orbitalPeriod: Int64
-    @NSManaged public var population: Int64
-    @NSManaged public var rotationPeriod: Int64
-    @NSManaged public var surfaceWater: Int64
+    @NSManaged public var orbitalPeriod: String?
+    @NSManaged public var population: String?
+    @NSManaged public var rotationPeriod: String?
+    @NSManaged public var surfaceWater: String?
     @NSManaged public var terrain: String?
     @NSManaged public var url: URL?
 
@@ -33,12 +33,12 @@ extension Planet {
     func dictionaryOfValuesForDisplay() -> [String: String?] {
         var dictionary = [String: String?]()
         dictionary["Climate"] = climate
-        dictionary["Diameter"] = String(diameter)
+        dictionary["Diameter"] = diameter
         dictionary["Gravity"] = gravity
-        dictionary["Orbital Period"] = String(orbitalPeriod)
-        dictionary["Population"] = String(population)
-        dictionary["Rotation Period"] = String(rotationPeriod)
-        dictionary["Surface Water"] = String(surfaceWater)
+        dictionary["Orbital Period"] = orbitalPeriod
+        dictionary["Population"] = population
+        dictionary["Rotation Period"] = rotationPeriod
+        dictionary["Surface Water"] = surfaceWater
         dictionary["Terrain"] = terrain
         return dictionary
     }

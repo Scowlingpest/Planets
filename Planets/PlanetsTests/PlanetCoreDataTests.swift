@@ -17,6 +17,9 @@ class PlanetCoreDataTests: XCTestCase {
     override func setUp() {
         super.setUp()
         manager = CoreDataManager()
+        if manager.fetchAllPlanets().count != 0 {
+            tearDown()
+        }
     }
     
     override func tearDown() {

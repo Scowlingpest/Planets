@@ -17,6 +17,9 @@ class CoreDataManagerTests: XCTestCase {
     override func setUp() {
         super.setUp()
         manager = CoreDataManager()
+        if manager.fetchAllPlanets().count != 0 {
+            tearDown()
+        }
     }
     
     override func tearDown() {
@@ -41,22 +44,22 @@ class CoreDataManagerTests: XCTestCase {
     }
     
     func testFetchAllPlanet() {
-        XCTAssert(manager.fetchAllPlanets() == [])
+        XCTAssertEqual(manager.fetchAllPlanets(), [])
         
         addPlanet()
         
-        XCTAssert(manager.fetchAllPlanets().count == 1)
+        XCTAssertEqual(manager.fetchAllPlanets().count, 1)
     }
     
     func testSavePlanetSmall() {
         let planet = ["name":"Test", "population" : "15"]
         manager.savePlanet(json: planet)
         
-        XCTAssert(manager.fetchAllPlanets().count == 1)
+        XCTAssertEqual(manager.fetchAllPlanets().count, 1)
         let savedPlanet = manager.fetchAllPlanets()[0]
         
-        XCTAssert(savedPlanet.name == "Test")
-        XCTAssert(savedPlanet.population == 15)
+        XCTAssertEqual(savedPlanet.name, "Test")
+        XCTAssertEqual(savedPlanet.population, "15")
     }
     
     func testSavePlanetBig() {
@@ -84,48 +87,48 @@ class CoreDataManagerTests: XCTestCase {
         
         manager.savePlanet(json: planet)
         
-        XCTAssert(manager.fetchAllPlanets().count == 1)
+        XCTAssertEqual(manager.fetchAllPlanets().count, 1)
         let savedPlanet = manager.fetchAllPlanets()[0]
         
-        XCTAssert(savedPlanet.name == "Alterra")
-        XCTAssert(savedPlanet.rotationPeriod == 15)
-        XCTAssert(savedPlanet.orbitalPeriod == 768)
-        XCTAssert(savedPlanet.diameter == 25000)
-        XCTAssert(savedPlanet.climate == "dead")
-        XCTAssert(savedPlanet.gravity == "3 standard")
-        XCTAssert(savedPlanet.terrain == "wasteland")
-        XCTAssert(savedPlanet.surfaceWater == 0)
-        XCTAssert(savedPlanet.population == 5000)
-        XCTAssert(savedPlanet.created == Date(timeIntervalSinceReferenceDate: 439904148.4790001))
-        XCTAssert(savedPlanet.edited == Date(timeIntervalSinceReferenceDate: 440801898.4200001))
-        XCTAssert(savedPlanet.url == URL(string: "https://swapi.co/api/planets/1/"))
+        XCTAssertEqual(savedPlanet.name, "Alterra")
+        XCTAssertEqual(savedPlanet.rotationPeriod, "15")
+        XCTAssertEqual(savedPlanet.orbitalPeriod, "768")
+        XCTAssertEqual(savedPlanet.diameter, "25000")
+        XCTAssertEqual(savedPlanet.climate, "dead")
+        XCTAssertEqual(savedPlanet.gravity, "3 standard")
+        XCTAssertEqual(savedPlanet.terrain, "wasteland")
+        XCTAssertEqual(savedPlanet.surfaceWater, "0")
+        XCTAssertEqual(savedPlanet.population, "5000")
+        XCTAssertEqual(savedPlanet.created, Date(timeIntervalSinceReferenceDate: 439904148.4790001))
+        XCTAssertEqual(savedPlanet.edited, Date(timeIntervalSinceReferenceDate: 440801898.4200001))
+        XCTAssertEqual(savedPlanet.url, URL(string: "https://swapi.co/api/planets/1/"))
     }
     
     
     func testWrongPlanet() {
                 let planet = [
-                          "rotation_period": "fifteen",
-                          "orbital_period": "number",
-                          "diameter": "nope",
-                          "surface_water": "ten",
-                          "population": "maybe",
+                          "rotation_period":5,
+                          "orbital_period": 5,
+                          "diameter": 5,
+                          "surface_water": 5,
+                          "population": 5,
                           "created": "date",
                           "edited": "different date",
                           "url": "nobody here but us trees"] as [String : Any]
             
             manager.savePlanet(json: planet)
             
-            XCTAssert(manager.fetchAllPlanets().count == 1)
+            XCTAssertEqual(manager.fetchAllPlanets().count, 1)
             let savedPlanet = manager.fetchAllPlanets()[0]
 
-            XCTAssert(savedPlanet.rotationPeriod == 0)
-            XCTAssert(savedPlanet.orbitalPeriod == 0)
-            XCTAssert(savedPlanet.diameter == 0)
-            XCTAssert(savedPlanet.surfaceWater == 0)
-            XCTAssert(savedPlanet.population == 0)
-            XCTAssert(savedPlanet.created == nil)
-            XCTAssert(savedPlanet.edited == nil)
-            XCTAssert(savedPlanet.url == nil)
+            XCTAssertNil(savedPlanet.rotationPeriod)
+            XCTAssertNil(savedPlanet.orbitalPeriod)
+            XCTAssertNil(savedPlanet.diameter)
+            XCTAssertNil(savedPlanet.surfaceWater)
+            XCTAssertNil(savedPlanet.population)
+            XCTAssertNil(savedPlanet.created)
+            XCTAssertNil(savedPlanet.edited)
+            XCTAssertNil(savedPlanet.url)
         }
     
     func testPlanetInfoDisplayOrder() {
@@ -138,6 +141,6 @@ class CoreDataManagerTests: XCTestCase {
         "Surface Water",
         "Population"]
         
-        XCTAssert(test == manager.planetInfoDisplayOrder())
+        XCTAssertEqual(test, manager.planetInfoDisplayOrder())
     }
 }
