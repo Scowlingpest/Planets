@@ -100,4 +100,44 @@ class CoreDataManagerTests: XCTestCase {
         XCTAssert(savedPlanet.edited == Date(timeIntervalSinceReferenceDate: 440801898.4200001))
         XCTAssert(savedPlanet.url == URL(string: "https://swapi.co/api/planets/1/"))
     }
+    
+    
+    func testWrongPlanet() {
+                let planet = [
+                          "rotation_period": "fifteen",
+                          "orbital_period": "number",
+                          "diameter": "nope",
+                          "surface_water": "ten",
+                          "population": "maybe",
+                          "created": "date",
+                          "edited": "different date",
+                          "url": "nobody here but us trees"] as [String : Any]
+            
+            manager.savePlanet(json: planet)
+            
+            XCTAssert(manager.fetchAllPlanets().count == 1)
+            let savedPlanet = manager.fetchAllPlanets()[0]
+
+            XCTAssert(savedPlanet.rotationPeriod == 0)
+            XCTAssert(savedPlanet.orbitalPeriod == 0)
+            XCTAssert(savedPlanet.diameter == 0)
+            XCTAssert(savedPlanet.surfaceWater == 0)
+            XCTAssert(savedPlanet.population == 0)
+            XCTAssert(savedPlanet.created == nil)
+            XCTAssert(savedPlanet.edited == nil)
+            XCTAssert(savedPlanet.url == nil)
+        }
+    
+    func testPlanetInfoDisplayOrder() {
+        let test = ["Rotation Period",
+        "Orbital Period",
+        "Diameter",
+        "Climate",
+        "Gravity",
+        "Terrain",
+        "Surface Water",
+        "Population"]
+        
+        XCTAssert(test == manager.planetInfoDisplayOrder())
+    }
 }

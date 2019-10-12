@@ -10,6 +10,9 @@
 		321C903323509D9C00C43B90 /* PlanetsTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321C903223509D9C00C43B90 /* PlanetsTableViewModel.swift */; };
 		321C90592351451600C43B90 /* CoreDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321C90582351451600C43B90 /* CoreDataManagerTests.swift */; };
 		321C905C23514CED00C43B90 /* JsonFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321C905B23514CED00C43B90 /* JsonFormatter.swift */; };
+		321C905E2351E73000C43B90 /* JsonFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321C905D2351E73000C43B90 /* JsonFormatterTests.swift */; };
+		321C90602351F1EC00C43B90 /* PlanetCoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321C905F2351F1EC00C43B90 /* PlanetCoreDataTests.swift */; };
+		321C90632351F4D600C43B90 /* ThemeHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321C90622351F4D600C43B90 /* ThemeHelperTests.swift */; };
 		32348000234CB86A005B782A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32347FFF234CB86A005B782A /* CoreDataManager.swift */; };
 		32348002234CB9E7005B782A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32348001234CB9E7005B782A /* NetworkManager.swift */; };
 		3234807C234DD44A005B782A /* ApiCaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234807B234DD44A005B782A /* ApiCaller.swift */; };
@@ -25,7 +28,6 @@
 		32EAC262234C99660000F7A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32EAC261234C99660000F7A6 /* Assets.xcassets */; };
 		32EAC265234C99660000F7A6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32EAC264234C99660000F7A6 /* Preview Assets.xcassets */; };
 		32EAC268234C99660000F7A6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32EAC266234C99660000F7A6 /* LaunchScreen.storyboard */; };
-		32EAC273234C99660000F7A6 /* PlanetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EAC272234C99660000F7A6 /* PlanetsTests.swift */; };
 		32EAC27E234C99660000F7A6 /* PlanetsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EAC27D234C99660000F7A6 /* PlanetsUITests.swift */; };
 		32EAC28C234C9E2B0000F7A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32EAC28B234C9E2B0000F7A6 /* Main.storyboard */; };
 		32EAC29E234CA5310000F7A6 /* PlanetsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32EAC29D234CA5310000F7A6 /* PlanetsTableViewController.swift */; };
@@ -53,6 +55,9 @@
 		321C903223509D9C00C43B90 /* PlanetsTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsTableViewModel.swift; sourceTree = "<group>"; };
 		321C90582351451600C43B90 /* CoreDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManagerTests.swift; sourceTree = "<group>"; };
 		321C905B23514CED00C43B90 /* JsonFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonFormatter.swift; sourceTree = "<group>"; };
+		321C905D2351E73000C43B90 /* JsonFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonFormatterTests.swift; sourceTree = "<group>"; };
+		321C905F2351F1EC00C43B90 /* PlanetCoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetCoreDataTests.swift; sourceTree = "<group>"; };
+		321C90622351F4D600C43B90 /* ThemeHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeHelperTests.swift; sourceTree = "<group>"; };
 		32347FFF234CB86A005B782A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		32348001234CB9E7005B782A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3234807B234DD44A005B782A /* ApiCaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCaller.swift; sourceTree = "<group>"; };
@@ -71,7 +76,6 @@
 		32EAC267234C99660000F7A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		32EAC269234C99660000F7A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32EAC26E234C99660000F7A6 /* PlanetsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlanetsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		32EAC272234C99660000F7A6 /* PlanetsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsTests.swift; sourceTree = "<group>"; };
 		32EAC274234C99660000F7A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32EAC279234C99660000F7A6 /* PlanetsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PlanetsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		32EAC27D234C99660000F7A6 /* PlanetsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsUITests.swift; sourceTree = "<group>"; };
@@ -106,6 +110,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		321C90612351F37B00C43B90 /* Controllers and Models */ = {
+			isa = PBXGroup;
+			children = (
+				32EAC29D234CA5310000F7A6 /* PlanetsTableViewController.swift */,
+				321C903223509D9C00C43B90 /* PlanetsTableViewModel.swift */,
+				323480EF234E03D5005B782A /* SettingsViewController.swift */,
+				323480DD234DDFDD005B782A /* DownloadIndicatorViewController.swift */,
+			);
+			path = "Controllers and Models";
+			sourceTree = "<group>";
+		};
 		32348011234CC79F005B782A /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,9 +214,11 @@
 		32EAC271234C99660000F7A6 /* PlanetsTests */ = {
 			isa = PBXGroup;
 			children = (
-				32EAC272234C99660000F7A6 /* PlanetsTests.swift */,
 				32EAC274234C99660000F7A6 /* Info.plist */,
 				321C90582351451600C43B90 /* CoreDataManagerTests.swift */,
+				321C905D2351E73000C43B90 /* JsonFormatterTests.swift */,
+				321C905F2351F1EC00C43B90 /* PlanetCoreDataTests.swift */,
+				321C90622351F4D600C43B90 /* ThemeHelperTests.swift */,
 			);
 			path = PlanetsTests;
 			sourceTree = "<group>";
@@ -218,13 +235,10 @@
 		32EAC29C234CA4F00000F7A6 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				321C90612351F37B00C43B90 /* Controllers and Models */,
 				32A9CC6B234E6CBE0079B7E1 /* Cells */,
 				323480EE234E02E1005B782A /* Storyboards */,
 				32EAC2A1234CA8260000F7A6 /* Themes */,
-				32EAC29D234CA5310000F7A6 /* PlanetsTableViewController.swift */,
-				323480DD234DDFDD005B782A /* DownloadIndicatorViewController.swift */,
-				323480EF234E03D5005B782A /* SettingsViewController.swift */,
-				321C903223509D9C00C43B90 /* PlanetsTableViewModel.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -393,7 +407,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				321C90592351451600C43B90 /* CoreDataManagerTests.swift in Sources */,
-				32EAC273234C99660000F7A6 /* PlanetsTests.swift in Sources */,
+				321C90602351F1EC00C43B90 /* PlanetCoreDataTests.swift in Sources */,
+				321C905E2351E73000C43B90 /* JsonFormatterTests.swift in Sources */,
+				321C90632351F4D600C43B90 /* ThemeHelperTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

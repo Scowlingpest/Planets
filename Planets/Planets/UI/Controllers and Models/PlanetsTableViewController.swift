@@ -64,7 +64,6 @@ class PlanetsTableViewController : UITableViewController {
     
     @objc func onTapSettings() {
         self.performSegue(withIdentifier: "ShowSettingsView", sender: nil)
-        
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
