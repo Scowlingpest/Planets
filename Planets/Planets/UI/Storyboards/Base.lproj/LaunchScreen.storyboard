@@ -22,19 +22,11 @@
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="PlanetImage" translatesAutoresizingMaskIntoConstraints="NO" id="hvh-cr-rSx" userLabel="planetImage">
-                                <rect key="frame" x="0.0" y="404" width="414" height="99"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="hvh-cr-rSx" secondAttribute="trailing" id="5EZ-WO-jad"/>
-                            <constraint firstItem="hvh-cr-rSx" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="5WB-QW-f0K"/>
-                            <constraint firstItem="hvh-cr-rSx" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="EEO-iK-xZH"/>
                             <constraint firstItem="mLW-BY-oMi" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="ZbS-B1-Wza"/>
-                            <constraint firstItem="hvh-cr-rSx" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="dZY-dd-80q"/>
                             <constraint firstItem="mLW-BY-oMi" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="fQe-5K-fUn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -45,7 +37,4 @@
             <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="PlanetImage" width="100" height="99"/>
-    </resources>
 </document>

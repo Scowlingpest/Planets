@@ -10,7 +10,7 @@ import Foundation
 
 class NetworkManager {
     let planetAddress = "https://swapi.co/api/planets/"
-    var planetsJson : [[String: AnyObject]]?
+    var planetsJson: [[String: AnyObject]]?
     var next: String?
     var delegate: NetworkManagerDelegate
     
@@ -19,16 +19,34 @@ class NetworkManager {
     }
     
     func fetchPlanetsInformation() {
-        let planetCaller = ApiCaller(address: planetAddress)
+        fetchPlanetFrom(address: planetAddress)
+    }
+    
+    func fetchPlanetFrom(address: String){
+        let planetCaller = ApiCaller(address: address)
         planetCaller.fetchFromAPI(){ json, next in
             if let jsonResponse = json, let results = jsonResponse["results"] as? [[String: AnyObject]] {
-                self.planetsJson = results
+                self.addNewPlanets(results: results)
                 self.next = next
             }
-
-            self.delegate.savePlanetData()
+            if self.next == nil {
+                self.delegate.savePlanetData()
+            } else if let address = next {
+                self.fetchPlanetFrom(address: address)
+            }
         }
         
+    }
+    
+    func addNewPlanets(results: [[String: AnyObject]]) {
+        if planetsJson == nil {
+            self.planetsJson = results
+        } else if var otherPlanets = planetsJson {
+            for result in results {
+                otherPlanets.append(result)
+            }
+            planetsJson = otherPlanets
+        }
     }
 }
 
