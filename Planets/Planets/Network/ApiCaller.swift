@@ -31,6 +31,9 @@ class ApiCaller {
                     completion(nil, nil)
                 }
             }
+            if error != nil {
+                completion(nil,nil)
+            }
         }
         task.resume()
         

@@ -17,18 +17,30 @@ class JsonFormatter {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"
         
     }
+    
+    //was originally being used before I discovered the numbers could be 'unknown', leaving it in for future use
     func jsonToInt(json: Any?) -> Int64 {
         if let transformed = Int64(stringOrBlank(json: json)) {
             return transformed
+        } else if let number = json as? NSNumber{
+            return number.int64Value
         }
         return 0
     }
     
     func jsonToDate(json: Any?) -> Date? {
+        //if it's already a date object just throw it back
+        if let date = json as? Date {
+            return date
+        }
         return dateFormatter.date(from: stringOrBlank(json: json))
     }
     
     func jsonToURL(json: Any?) -> URL? {
+        //if it's already a url then chuck it back
+        if let url = json as? URL {
+            return url
+        }
        return URL(string: stringOrBlank(json: json))
     }
     
@@ -36,6 +48,7 @@ class JsonFormatter {
         return jsonToString(json: json) ?? ""
     }
     
+    //could alternatively do "\(json)" but I feel this is more what we want, we don't want to convert it to string just identify it is a string
     func jsonToString(json: Any?) -> String? {
         return json as? String
     }
