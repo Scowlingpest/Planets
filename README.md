@@ -20,10 +20,11 @@
 2. Open the app, it will download the planet information and show you an activity spinner whilst it does.
 3. The app will now show you a list of planets.
 4. Tap on a planet name/row to open that planet, the app will scroll that planet to the top of the screen so you can see the data.
-5. To close a planet simply tap on its' row again, or tap on another planet. This will close the planet you had open, scroll you to the new planet and open it.
+5. To close a planet simply tap on its row again, or tap on another planet. This will close the planet you had open, scroll you to the new planet and open it.
 6. There is a search bar along the top of the planet list, simply type in there to update the list of planets you see. If you type in something it cannot find, it will not update your planets, so you will always have at least 1 planet on screen. To clear your search either click the X, click Cancel, or remove your text.
 7. Click the cogs in the top left corner to go to the Settings screen, this contains information about the application and the theme switch.
 8. Tap the switch (titled Dark Mode) to change the theme. If the switch is off, you are in Light mode. If the switch is on, you are in Dark mode. The app will remember which theme you picked even if you close and reopen the app.
+9. Reopening the app in future will not re-download the data and will take you straight to the planet list.
 
 
 # Future Features and Improvements
