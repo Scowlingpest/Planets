@@ -30,7 +30,7 @@ class NetworkManager {
                 self.next = next
             }
             if self.next == nil {
-                self.delegate.savePlanetData()
+                self.delegate.savePlanetData(manager: CoreDataManager.sharedInstance)
             } else if let address = next {
                 self.fetchPlanetFrom(address: address)
             }
@@ -51,5 +51,5 @@ class NetworkManager {
 }
 
 protocol NetworkManagerDelegate {
-    func savePlanetData()
+    func savePlanetData(manager: CoreDataManager)
 }

@@ -12,23 +12,11 @@ import CoreData
 
 class PlanetCoreDataTests: XCTestCase {
 
-    var manager: CoreDataManager!
+    var manager: MockCoreDataManager!
     
     override func setUp() {
         super.setUp()
-        manager = CoreDataManager()
-        if manager.fetchAllPlanets().count != 0 {
-            tearDown()
-        }
-    }
-    
-    override func tearDown() {
-        let delete = NSBatchDeleteRequest(fetchRequest: NSFetchRequest<NSFetchRequestResult>(entityName: "Planet"))
-        do {
-            try manager.persistentContainer.viewContext.execute(delete)
-        } catch {
-            print("Tests are broken, please fix them")
-        }
+        manager = MockCoreDataManager()
     }
 
     func testDictionaryOfValuesForDisplay() {
@@ -53,7 +41,7 @@ class PlanetCoreDataTests: XCTestCase {
                           "Rotation Period": "15",
                           "Surface Water": "0",
                           "Terrain": "wasteland"]
-        manager.savePlanet(json: planet)
+        manager.savePlanet(json: planet, manager: manager)
         
         XCTAssert(manager.fetchAllPlanets().count == 1)
         let savedPlanet = manager.fetchAllPlanets()[0]

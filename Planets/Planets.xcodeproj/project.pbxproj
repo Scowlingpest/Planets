@@ -13,6 +13,8 @@
 		321C905E2351E73000C43B90 /* JsonFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321C905D2351E73000C43B90 /* JsonFormatterTests.swift */; };
 		321C90602351F1EC00C43B90 /* PlanetCoreDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321C905F2351F1EC00C43B90 /* PlanetCoreDataTests.swift */; };
 		321C90632351F4D600C43B90 /* ThemeHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321C90622351F4D600C43B90 /* ThemeHelperTests.swift */; };
+		321C90652353518300C43B90 /* MockCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 321C90642353518300C43B90 /* MockCoreDataManager.swift */; };
+		321C906723535DA200C43B90 /* Planets.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 32EAC25C234C99650000F7A6 /* Planets.xcdatamodeld */; };
 		32348000234CB86A005B782A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32347FFF234CB86A005B782A /* CoreDataManager.swift */; };
 		32348002234CB9E7005B782A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32348001234CB9E7005B782A /* NetworkManager.swift */; };
 		3234807C234DD44A005B782A /* ApiCaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3234807B234DD44A005B782A /* ApiCaller.swift */; };
@@ -58,6 +60,7 @@
 		321C905D2351E73000C43B90 /* JsonFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonFormatterTests.swift; sourceTree = "<group>"; };
 		321C905F2351F1EC00C43B90 /* PlanetCoreDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetCoreDataTests.swift; sourceTree = "<group>"; };
 		321C90622351F4D600C43B90 /* ThemeHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeHelperTests.swift; sourceTree = "<group>"; };
+		321C90642353518300C43B90 /* MockCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoreDataManager.swift; sourceTree = "<group>"; };
 		32347FFF234CB86A005B782A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		32348001234CB9E7005B782A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3234807B234DD44A005B782A /* ApiCaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCaller.swift; sourceTree = "<group>"; };
@@ -219,6 +222,7 @@
 				321C905D2351E73000C43B90 /* JsonFormatterTests.swift */,
 				321C905F2351F1EC00C43B90 /* PlanetCoreDataTests.swift */,
 				321C90622351F4D600C43B90 /* ThemeHelperTests.swift */,
+				321C90642353518300C43B90 /* MockCoreDataManager.swift */,
 			);
 			path = PlanetsTests;
 			sourceTree = "<group>";
@@ -406,8 +410,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				321C90652353518300C43B90 /* MockCoreDataManager.swift in Sources */,
 				321C90592351451600C43B90 /* CoreDataManagerTests.swift in Sources */,
 				321C90602351F1EC00C43B90 /* PlanetCoreDataTests.swift in Sources */,
+				321C906723535DA200C43B90 /* Planets.xcdatamodeld in Sources */,
 				321C905E2351E73000C43B90 /* JsonFormatterTests.swift in Sources */,
 				321C90632351F4D600C43B90 /* ThemeHelperTests.swift in Sources */,
 			);

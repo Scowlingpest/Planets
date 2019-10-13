@@ -12,23 +12,12 @@ import CoreData
 
 class CoreDataManagerTests: XCTestCase {
     
-    var manager: CoreDataManager!
+    var manager: MockCoreDataManager!
     
     override func setUp() {
         super.setUp()
-        manager = CoreDataManager()
-        if manager.fetchAllPlanets().count != 0 {
-            tearDown()
-        }
-    }
-    
-    override func tearDown() {
-        let delete = NSBatchDeleteRequest(fetchRequest: NSFetchRequest<NSFetchRequestResult>(entityName: "Planet"))
-        do {
-            try manager.persistentContainer.viewContext.execute(delete)
-        } catch {
-            print("Tests are broken, please fix them")
-        }
+        manager = MockCoreDataManager()
+        print(manager.fetchAllPlanets().count)
     }
     
     func addPlanet() {
@@ -53,7 +42,7 @@ class CoreDataManagerTests: XCTestCase {
     
     func testSavePlanetSmall() {
         let planet = ["name":"Test", "population" : "15"]
-        manager.savePlanet(json: planet)
+        manager.savePlanet(json: planet, manager: manager)
         
         XCTAssertEqual(manager.fetchAllPlanets().count, 1)
         let savedPlanet = manager.fetchAllPlanets()[0]
@@ -85,7 +74,7 @@ class CoreDataManagerTests: XCTestCase {
                       "edited": "2014-12-20T20:58:18.420000Z",
                       "url": "https://swapi.co/api/planets/1/"] as [String : Any]
         
-        manager.savePlanet(json: planet)
+        manager.savePlanet(json: planet, manager: manager)
         
         XCTAssertEqual(manager.fetchAllPlanets().count, 1)
         let savedPlanet = manager.fetchAllPlanets()[0]
@@ -116,7 +105,7 @@ class CoreDataManagerTests: XCTestCase {
                           "edited": "different date",
                           "url": "nobody here but us trees"] as [String : Any]
             
-            manager.savePlanet(json: planet)
+        manager.savePlanet(json: planet, manager: manager)
             
             XCTAssertEqual(manager.fetchAllPlanets().count, 1)
             let savedPlanet = manager.fetchAllPlanets()[0]

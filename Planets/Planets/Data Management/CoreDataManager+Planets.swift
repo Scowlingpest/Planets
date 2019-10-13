@@ -16,8 +16,8 @@ extension CoreDataManager {
         networkManager.fetchPlanetsInformation()
     }
     
-    func savePlanet(json: [String: Any]) {
-        let context = CoreDataManager.sharedInstance.persistentContainer.viewContext
+    func savePlanet(json: [String: Any], manager: CoreDataManager) {
+        let context = manager.persistentContainer.viewContext
         if let planetEntity = NSEntityDescription.insertNewObject(forEntityName: "Planet", into: context) as? Planet {
             let jsonFormatter = JsonFormatter()
             
@@ -38,7 +38,7 @@ extension CoreDataManager {
             
             
         }
-        CoreDataManager.sharedInstance.saveContext()
+        manager.saveContext()
         
     }
     
@@ -57,10 +57,10 @@ extension CoreDataManager {
 
 //in the future I expect this might be moved either back to the main file or into it's own file, but since right now it's only planets it can stay here
 extension CoreDataManager: NetworkManagerDelegate {
-    func savePlanetData() {
+    func savePlanetData(manager: CoreDataManager) {
         if let planetsJson = networkManager.planetsJson {
             for planet in planetsJson {
-                savePlanet(json: planet)
+                savePlanet(json: planet, manager: manager )
             }
             NotificationCenter.default.post(name: CoreDataManager.retrievedDataNotificationName, object: nil)
             
