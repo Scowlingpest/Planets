@@ -23,6 +23,7 @@ class DownloadIndicatorViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        //if we have data we can show then go to application
         if !CoreDataManager.sharedInstance.fetchAllPlanets().isEmpty {
             proceedToApplication()
         } else {
@@ -45,12 +46,12 @@ class DownloadIndicatorViewController: UIViewController {
     }
     
     @objc func dataLoaded() {
-            if !CoreDataManager.sharedInstance.fetchAllPlanets().isEmpty {
-                self.proceedToApplication()
-            } else {
-                failedToLoad()
-            }
-        
+        //if it's successfully got something, continue, otherwise let the user try again
+        if !CoreDataManager.sharedInstance.fetchAllPlanets().isEmpty {
+            self.proceedToApplication()
+        } else {
+            failedToLoad()
+        }
     }
     
     @objc func failedToLoad(){
@@ -66,8 +67,7 @@ class DownloadIndicatorViewController: UIViewController {
     }
     
     func proceedToApplication() {
-        DispatchQueue.main.async {
-            
+        DispatchQueue.main.async { 
             self.performSegue(withIdentifier: "ShowPlanetList", sender: nil)
         }
     }

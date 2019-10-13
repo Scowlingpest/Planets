@@ -42,7 +42,7 @@ class PlanetsTableViewController : UITableViewController {
         self.navigationItem.title = "Planets" // title of the app, so it's not localised
         
         //should replace with an icon at some point, but for now the word Settings will be used
-        let settingsButton = UIBarButtonItem.init(title: "Settings", style: .plain, target: self, action: #selector(onTapSettings))
+        let settingsButton = UIBarButtonItem.init(image: UIImage(named: "settingsCog"), style: .plain, target: self, action: #selector(onTapSettings))
         navigationItem.leftBarButtonItem = settingsButton
         
         configureSearchController()
@@ -67,6 +67,7 @@ class PlanetsTableViewController : UITableViewController {
         self.performSegue(withIdentifier: "ShowSettingsView", sender: nil)
     }
     
+    //want to allow for increased text sizes
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return UITableView.automaticDimension
     }
@@ -74,7 +75,7 @@ class PlanetsTableViewController : UITableViewController {
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "PlanetCell") as? PlanetNameHeaderCell
         
-        headerCell?.createBasicCell(name: viewModel.filteredPlanetNames[section], section: section)
+        headerCell?.createBasicCell(name: viewModel.planetNameFor(section: section), section: section)
         headerCell?.delegate = self
         return headerCell
     }
@@ -87,31 +88,28 @@ extension PlanetsTableViewController: UISearchControllerDelegate,UISearchResults
         tableView.reloadData()
     }
     
+    //filter the data, if the search text is empty then reset the data, otherwise filter it by contents
     func filter(searchText: String?) {
         if searchText == nil || searchText?.isEmpty ?? true {
             viewModel.resetSearch()
         } else if let search = searchText {
-            let searchPredicate = NSPredicate(format: "self contains [cd] %@", search)
             
-            let items = viewModel.planetNames.filter { planetName -> Bool in
-                return searchPredicate.evaluate(with: planetName)
-            }
-            
-            if !items.isEmpty {   
-                viewModel.filteredPlanetNames = items
-            }
+            viewModel.filterPlanets(searchText: search)
         }
-        
     }
 }
 
 extension PlanetsTableViewController: CollapsibleHeaderDelegate {
+    
+    //when i've been told a header is tapped, change the selectedIndex, reload the data and scroll to the section that was tapped
     func sectionTapped(didSelectSection section: Int) {
-        viewModel.selectedIndex = viewModel.selectedIndex == section ? -1 : section
+        viewModel.changeSelectedIndex(section: section)
         tableView.reloadData()
-        if viewModel.selectedIndex != -1 {
+        
+        if viewModel.isASectionOpen() {
             tableView.scrollToRow(at: IndexPath(row: 0, section: section), at: .top, animated: true)
         } else {
+            //if the section is closed then we need to scroll to the header rather than the first row
             tableView.scrollToRow(at: IndexPath(row: NSNotFound, section: section), at: .none, animated: false)
         }
         

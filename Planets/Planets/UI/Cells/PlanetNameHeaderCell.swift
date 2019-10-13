@@ -25,6 +25,7 @@ class PlanetNameHeaderCell: UITableViewCell {
         super.awakeFromNib()
     }
     
+    //creates the cell from the name and section number, sets the colours and label contents, also setups the tap recognizer
     func createBasicCell(name: String?, section: Int){
         self.section = section
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -45,6 +46,7 @@ class PlanetNameHeaderCell: UITableViewCell {
         }
     }
     
+    //when tapped, tell the delegate i've been tapped
     @objc func didTapHeader(_ sender: UIGestureRecognizer?) {
         
         if let delegate = delegate, let sectionIndex = section {
